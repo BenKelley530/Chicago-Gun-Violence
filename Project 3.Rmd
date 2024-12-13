@@ -1,0 +1,38 @@
+---
+title: "Project 3"
+author: "Ben Kelley"
+date: "2024-11-20"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Data Processing
+
+```{r}
+gun <- read.csv("C:/Users/btkre/OneDrive/Documents/Data Analysis/Gun Violence.csv")
+
+head(gun)
+
+dim(gun)
+
+time_period <- strsplit(gun$TIME_PERIOD, " ")
+
+year <- c()
+for (i in 1:length(time_period)) {
+  
+  year[i] <- time_period[[i]][1]
+}
+
+quarter <- c()
+for (i in 1:length(time_period)) {
+  
+  quarter[i] <- time_period[[i]][2]
+}
+
+gun <- cbind(year, quarter, gun)
+
+head(gun)
+```
